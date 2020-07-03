@@ -29,7 +29,7 @@ select=st.sidebar.selectbox('Visualiaztion Type',['Histogram','Pie-chart'],key='
 sentiment_count=data['airline_sentiment'].value_counts()
 sentiment_count=pd.DataFrame({'sentiment': sentiment_count.index,'Tweets' : sentiment_count.values})
 
-if not st.sidebar.checkbox("Hide",True):
+if not st.sidebar.checkbox("Hide",False):
 	st.markdown("## Number of Tweets by Sentiment")
 	if select == "Histogram":
 		fig=px.bar(sentiment_count,x='sentiment',y='Tweets',color='Tweets',height=500)
@@ -42,8 +42,9 @@ st.sidebar.subheader("When and Where The Users Tweeting From")
 hour=st.sidebar.slider("Hour of Day", 0,23)
 
 modified_data=data[data['tweet_created'].dt.hour==hour]
-if not st.sidebar.checkbox("close",True,key='1'):
+if not st.sidebar.checkbox("close",False,key='1'):
 	st.markdown("### Tweets Locations Based on Time of The Day")
+	st.markdown("Change time from the sidebar")
 	st.markdown("%i Tweets Between %i:00 and %i:00" %(len(modified_data),hour,(hour+1)%24))
 	st.map(modified_data)
 
@@ -51,9 +52,10 @@ if not st.sidebar.checkbox("close",True,key='1'):
 		st.write(modified_data)
 
 st.sidebar.subheader("Breakdown Airline Tweets by Sentiment")
-choice=st.sidebar.multiselect('Pick Airlines',['US Airways','United','American','Southwest','Delta','Virgin America'],key='0')
+choice=st.sidebar.multiselect('Pick Airlines',options=['US Airways','United','American','Southwest','Delta','Virgin America'],default=['American'],key='0')
 
 if len(choice) > 0:
+	st.markdown("### Pick Airlines from the sidebar to comapre between Airlines Tweets")
 	choice_data = data[data.airline.isin(choice)]
 	fig_choice=px.histogram(choice_data,x='airline',y='airline_sentiment',histfunc='count',
 		color='airline_sentiment',facet_col='airline_sentiment',labels={'airline_sentiment':'Tweets'},height=600,width=800)
@@ -62,7 +64,7 @@ if len(choice) > 0:
 st.sidebar.header("Word CLoud")
 word_sentiment=st.sidebar.radio('Display word cloud for what sentiment?',('positive','neutral','negative'))
 
-if not st.sidebar.checkbox("close",True,key='3'):
+if not st.sidebar.checkbox("close",False,key='3'):
 	st.header('Word Cloud for %s sentiment' %(word_sentiment))
 	df=data[data['airline_sentiment']==word_sentiment]
 	words=' '.join(df['text'])
