@@ -1,5 +1,5 @@
 # Data Dashboard using Streamlit
-US airlines data sentiment analysis using streamlit.Steamlit is a extermely efficient way to show your data using plots and figures thanks to its developers.The app uses Twitter US Airline Sentiment which is available on kaggle.Its a web app which shows number of total tweets divided by sentiments positive,negative and neutral.You can compare results of various airlines and interactive sidebar adjusting which you can see when and where tweets were tweeted.Also a word cloud of the data for positive,negative and neutral comments.
+US airlines data sentiment analysis using streamlit.Steamlit is a extermely efficient way to show your data using plots and figures thanks to its developers.The app uses Twitter US Airline Sentiment data which is available on kaggle.Its a web app which shows number of total tweets divided by sentiments positive,negative and neutral.You can compare results of various airlines and interactive sidebar adjusting which you can see when and where tweets were tweeted.Also a word cloud of the data for positive,negative and neutral comments.
 <br />
 You can see it live in https://jinu-dashboard.herokuapp.com/.
 
