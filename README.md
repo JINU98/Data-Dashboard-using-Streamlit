@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 Make sure that you have python pre-installed on your PC.
-Things you need to install the software and how to install them:
+Things you need to install the software and how to install them: <br />
 streamlit <br />
 plotly <br />
 wordcloud <br />
